@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% extends 'base.html' %}
+<title>{% block title %}Dashboard{% endblock %}</title>
+{% block head %}
+{{ block.super }}
+{% endblock %}
+{% block content %}
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+                <!-- <img src="#"> INSERT ICON  -->
+                <h1 class="display-6">Welcome, {{current_user.first_name}}!</h1>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="Navbar">
+            <!-- INSERT NAVBAR BLOCK HERE -->
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <h3>Newest WatchiT!:</h3>
+                    <!-- {{current_movie.title}} -->
+                    <!-- {{current_movie.desc}} -->
+                    <a href="/watched">Watch'd!</a>
+                    <a href="/edit/{{current_movie.id}}">Edit</a>
+                </div>
+                <div class="card">
+                    <h3>Last Watch'd:</h3>
+                    <!-- {{current_movie.updated_at.title}}
+                    {{current_movie.updated_at.desc}} -->
+                    <a href="/delete">Delete</a>
+                    {% if current_user not in this_movie.liked_by.all  %}
+                    <a href="/love/{{current_movie.id}}" class="btn btn-outline-primary">Love'd iT!</a>
+                    {% else %}
+                    <a href="/unlove/{{current_movie.id}}" class="btn btn-outline-info">Eh...</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <h3>Add a Movie:</h3>
+                    <form action="/add_movie" method="POST">
+                        {% csrf_token %}
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingTitle" name="title" placeholder="title">
+                            <label for="floatingTitle">Title: </label>
+                        </div>
+                        <div class="form-floating">
+                            <textarea name="desc" class="form-control">Add movie description...</textarea>
+                        </div>
+                        <div class="form-floating" class="form-control">
+                            <input type="date" class="form-control" name="release_date">
+                        </div>
+                        <input type="submit" class="btn btn-info" value="WatchiT!">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

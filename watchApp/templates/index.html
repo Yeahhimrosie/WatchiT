@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Lets WatchiT!</title>
+</head>
+<body>
+    <div class="container">
+        <div class="main_body text-center text-white">
+            <h1 class="display-4 my-4 pt-4">Welcome to WatchiT!</h1>
+            <div class="row text-center">
+                <div class="p-3 mb-2 bg-secondary text-white">
+                    <h6 class="fst-italic fw-light">For all the those times you wanted to remember a film: all your movies recs, all in one place!</h6>
+                    <h6 class="fst-italic fw-light">Start building your personal watchlist! Register, or Login to get started!</h6> 
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col my-5">
+                    <h2 class="text-white fw-light">Registration</h2>
+                    {% if messages %}
+                    <ul class="messages">    
+                        {% for message in messages %}    
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <form action="/user/create" method="POST">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingFirst" name="first_name" placeholder="First Name">
+                                <label for="floatingFirst">First Name</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingLast" name="last_name" name="email" placeholder="Last Name">
+                                <label for="floatingLast">Last Name</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com">
+                                <label for="floatingEmail">Email address</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPasswordConf" name="password_conf" name="password" placeholder="Password">
+                                <label for="floatingPasswordConf">Password Confirmation</label>
+                            </div>
+                            <br>
+
+                            <input type="submit" class="btn btn-primary" value="Register">
+                        </div>
+                    </form>
+                </div>
+                <div class="col my-5">
+                    <h2 class="text-white fw-light">Login</h2>
+                    {% if messages %}
+                    <ul class="messages">    
+                        {% for message in messages %}    
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <form action="/user/login" method="POST">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com">
+                            <label for="floatingEmail">Email address</label>
+                        </div>
+
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                    </div>
+                    <!-- <form action="/user/login" method="POST">
+                    {% csrf_token %}
+                    <label>Email<br><input type="text" name="email"></label>
+                    <br>
+                    <label>Password <input type="password" name="password"></label>
+                    <br> -->
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="Log In">
+                    </form>
+                </div>
+            </div>        
+    </div>
+</body>
+</html>
