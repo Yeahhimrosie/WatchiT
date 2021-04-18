@@ -2,18 +2,18 @@ from django.db import models
 from django.db.models.fields import EmailField
 import re
 import bcrypt
-# import DateTimeField
+
 
 class UserManager(models.Manager):
     def registration_validator(self, reqPOST):
         errors = {}
-        if len(reqPOST['first_name']) < 2:
+        if len(reqPOST['first_name']) <= 2:
             errors ['first_name'] = "Name is too short"
-        if len(reqPOST['last_name']) < 2:
+        if len(reqPOST['last_name']) <= 2:
             errors ['last_name'] = "Name is too short"
-        if len(reqPOST['email']) < 6:
+        if len(reqPOST['email']) <= 6:
             errors ['email'] = "Email too short"
-        if len(reqPOST['password']) < 8:
+        if len(reqPOST['password']) <= 8:
             errors['password'] = "Password too short"
         if reqPOST['password'] != reqPOST['password_conf']:
             errors['match'] = "Passwords do not match!"
@@ -58,8 +58,9 @@ class User(models.Model):
 class Movie(models.Model):
     title = models.TextField()
     desc = models.TextField()
-    release_date = models.DateTimeField()
-    liked_by = models.ForeignKey(User, related_name='user_that_liked', on_delete=models.CASCADE)
+    release_date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
+    liked_by = models.ForeignKey(User, related_name='user_that_liked', null=True, on_delete=models.CASCADE)
+    watchd = models.BooleanField(default = False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = MovieManager()

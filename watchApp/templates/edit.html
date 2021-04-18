@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>edit_movie</title>
+    {% extends 'base.html' %}
+    <title>{% block title %}Edit Movie{% endblock %}</title>
+    {% block head %}
+    {{ block.super }}
+    {% endblock %}
+    {% block content %}
 </head>
 <body>
-    <h1 class="display-6"></h1>{{current_movie.title}}</h1>x
+    <div class="background-img" style="background-image: url('../static/images/red_lights.png');">
+        <div class="container pt-3 pb-4">
+            <div class="card">
+                <h class="display-5 text-center mt-2">{{current_movie.title}}
+                </h>
+                {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form action="/save_changes/{{current_movie.id}}" method="POST">
+                    {% csrf_token %}
+                    <h5 class="mx-3">Title: </h5>
+                    <div class="form-floating my-5 mx-5">
+                        <input type="text" class="form-control" id="floatingTitle" name="title" placeholder="title" value="{{current_movie.title}}">
+                    </div>
+                    <h5 class="mx-3">Description: </h5>
+                    <div class="form-floating my-5 mx-5">
+                        <textarea name="desc" placeholder="Add movie description..." id="floatingDesc" class="form-control">{{current_movie.desc}}</textarea>
+                    </div>
+                    <h5 class="mx-3">release date: </h5>
+                    <div class="form-floating my-5 mx-5" class="form-control my-3 mx-3">
+                        <input type="date" required="true" class="form-control" onfocus="(this.type='date')" name="release_date" autocomplete="on"> 
+                        <label for="floatingDesc">{{current_movie.release_date|date:'m/d/Y'}} </label>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-around my-3">
+                            <div class="form-floating" class="form-control">
+                                <input type="submit" class="btn btn-primary" value="Update">
+                            </div>
+                            <div class="form-floating" class="form-control">
+                                <button class="btn btn-primary" href="/watchd/{{current_movie.id}}" >Watch'd!</button>
+                            </div>
+                            <div class="form-floating" class="form-control">
+                                <a class="btn btn-primary" href="/delete/{{current_movie.id}}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
 </body>
 </html>

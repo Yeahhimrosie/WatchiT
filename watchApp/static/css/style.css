@@ -5,13 +5,14 @@
 
 body{
     background-color: rgba(0, 0, 0, 0.589);
-    background-image: url('/images/lights_background.jpg');
+    background-image: url('../images/red_lights.png');
+    overflow: hidden;
 }
 .container{
     height: 800px;
     background-color: #6d0909;
     border-radius: 10px;
-    /* opacity: 0.6; */
+    opacity: 0.91;
 }
 
 .button{

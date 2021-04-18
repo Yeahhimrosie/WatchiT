@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'base.html' %}
+<title>{% block title %}WatchiT!{% endblock %}</title>
+{% block head %}
+{{ block.super }}
+{% endblock %}
+{% block content %}
+</head>
+<body>
+    <script>
+        $(function () {$('.example-popover').popover({
+            container: 'body'
+            })
+        })
+    </script>
+    <div class="image_back" style="background-image: url('../static/images/theatre_curtains.png'); background-position: center; background-color: black;  height: fit-content; background-size: stretch; background-repeat: repeat-y;">
+        <div class="container">
+            <div class="row">
+                <h1 class="display-4 text-center text-light">Your WatchiT List!:</h1>
+            </div>
+            {% for each_movie in watchit_movies %}
+            <div class="row">
+                <div class="col-11 my-2">
+                    <div class="card px-2" style="max-width: 60rem; max-height: fit-content;">
+                        <h5 class="text-center mt-3">{{each_movie.title}}</h5>
+                        <br>
+                        <p class="blockquote text-center">{{each_movie.desc}}</p>
+                        <p class="text-muted text-center">released: {{each_movie.release_date|date:'m/d/Y'}}</p>
+                    </div>
+                    <br>
+                </div>
+                <div class="col">
+                    <!-- <button type="button" class="btn btn-md btn-light example-popover" data-bs-toggle="popover" data-bs-html="true" data-trigger="click"
+                    data-bs-content="<a href='/watchd'>Add to Watch'd!</a>
+                    <br>
+                    <a href='#'></a>
+                    <a href='/edit/{{each_movie.id}}'>Edit</a>
+                    <br>
+                    <a href='#'></a>
+                    <a href='/delete'>Delete</a>" title="Options">
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg>
+                    </button>    -->
+
+                    <div class="dropdown">
+                        <button class="btn btn-md btn-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </button>
+                        
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/watchd/{{each_movie.id}}">Add to Watch'd!</a></li>
+                        <li><a class="dropdown-item" href="/edit/{{each_movie.id}}">Edit</a></li>
+                        <li><a class="dropdown-item" href="/delete/{{each_movie.id}}">Delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

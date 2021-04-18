@@ -3,4 +3,27 @@
 }
 body{
     background-image: url('/images/lights_background.jpg');
+    overflow-x: hidden;
+}
+.form-control{
+    width: fit-content;    
+}
+/* .img-thumbnail{
+    height: 200px;
+    width: 200px;
+} */
+.header_icon{
+    width: 90px;
+    height: 90px;
+}
+/* .container{
+    background-image: url ('static/images/theatre_seats.png');
+} */
+.card{
+    opacity: 0.91;
+    border-radius: 5px;
+}
+
+.example-popover{
+    width: fit-content;
 }

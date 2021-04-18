@@ -17,7 +17,7 @@
         <div class="main_body text-center text-white">
             <h1 class="display-4 my-4 pt-4">Welcome to WatchiT!</h1>
             <div class="row text-center">
-                <div class="p-3 mb-2 bg-secondary text-white">
+                <div class="p-3 mb-2 text-white" style="background-color: rgb(207, 165, 165);">
                     <h6 class="fst-italic fw-light">For all the those times you wanted to remember a film: all your movies recs, all in one place!</h6>
                     <h6 class="fst-italic fw-light">Start building your personal watchlist! Register, or Login to get started!</h6> 
                 </div>
@@ -70,6 +70,7 @@
                 <div class="col my-5">
                     <h2 class="text-white fw-light">Login</h2>
                     {% if messages %}
+                    <!-- and messages.type != "registration" -->
                     <ul class="messages">    
                         {% for message in messages %}    
                             <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
@@ -89,12 +90,6 @@
                             <label for="floatingPassword">Password</label>
                         </div>
                     </div>
-                    <!-- <form action="/user/login" method="POST">
-                    {% csrf_token %}
-                    <label>Email<br><input type="text" name="email"></label>
-                    <br>
-                    <label>Password <input type="password" name="password"></label>
-                    <br> -->
                     <br>
                     <input type="submit" class="btn btn-primary" value="Log In">
                     </form>
