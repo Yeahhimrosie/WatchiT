@@ -2,6 +2,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
+__pycache__/
+.vscode/
+venv/
+db.sqlite3
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
