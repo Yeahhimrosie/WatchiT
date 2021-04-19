@@ -81,7 +81,11 @@ def add_movie(request):
                 messages.error(request, value)
             return redirect('/dashboard')
         else:
-            Movie.objects.create(title=request.POST['title'], desc=request.POST['desc'], release_date=request.POST['release_date'], liked_by=User.objects.get(id=request.session['user_id']), watchd=False)
+            if 'release_date' not in request.POST:
+                release_date = None
+            else:
+                release_date = request.POST['release_date']
+            Movie.objects.create(title=request.POST['title'], desc=request.POST['desc'], release_date=release_date, liked_by=User.objects.get(id=request.session['user_id']), watchd=False)
             return redirect('/dashboard')
     return redirect('/dashboard')
 
@@ -99,10 +103,11 @@ def watchd(request, movie_id):
     if 'user_id' not in request.session:
         return redirect('/')
     current_movie = Movie.objects.get(id=movie_id)
-    if current_movie != None:
+    print(current_movie.watchd)
+    if current_movie:
         current_movie.watchd = True
         current_movie.save()
-    return redirect('/watchiT_page')
+    return redirect('/dashboard')
 
 
 def watch_again(request, movie_id):
@@ -145,7 +150,7 @@ def delete(request, movie_id):
         return redirect('/')
     movie_to_delete = Movie.objects.get(id=movie_id)
     movie_to_delete.delete()
-    # print(f"Look here! Movie id =", movie_id)
+    print(f"Look here! Movie id =", movie_id)
     return redirect('/dashboard')
 
 
