@@ -13,4 +13,5 @@ Click on the "Watch'd!" navbar link to view a list of already seen films.
 Here, you can also "Re-WatchiT!" (move back to your list of wanting to see this again), Delete, or "love" the film by clicking on the heart-eyed emoji.
 You always have to option of editing entries, simply use the edit link under your entry. 
 Sit back, relax and enjoy your WatchiT!
-Add this ! [logging in](get_started.gif)/ ! [navigating the page](navigate.gif)/ ! [how_to_directions](how_to.jpg)
+
+! [logging in](github_images/get_started.gif)/ ! [navigating the page](github_images/navigate.gif)/ ! [how_to_directions](github_images/how_to.jpg)
