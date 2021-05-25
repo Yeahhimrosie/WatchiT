@@ -14,4 +14,6 @@ Here, you can also "Re-WatchiT!" (move back to your list of wanting to see this 
 You always have to option of editing entries, simply use the edit link under your entry. 
 Sit back, relax and enjoy your WatchiT!
 
-! [logging in](github_images/get_started.gif)/ ! [navigating the page](github_images/navigate.gif)/ ! [how_to_directions](github_images/how_to.jpg)
+![logging in](github_images/get_started.gif)
+![navigating the page](github_images/navigate.gif)
+![how_to_directions](github_images/how_to.jpg)
