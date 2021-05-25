@@ -12,4 +12,4 @@ On the top Navigation board, click on "WatchiT!" to view your list of movies you
 Click on the "Watch'd!" navbar link to view your list of already seen films.
 Here, you can also "Re-WatchiT!" (move back to your list of wanting to see this again), Delete, or "love" the film by clicking on the heart-eyed emoji.
 You always have to option of editing entries, simply use the edit link under your entry. 
-~Sit back, relax and enjoy your WatchiT!~
+Sit back, relax and enjoy your WatchiT!
