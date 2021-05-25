@@ -16,3 +16,4 @@ Sit back, relax and enjoy your WatchiT!
 
 ![how_to](https://user-images.githubusercontent.com/76067173/119551675-bebba780-bd4e-11eb-86c5-5994a170af7d.jpg)
 
+![howTo (1)](https://user-images.githubusercontent.com/76067173/119554396-75208c00-bd51-11eb-8333-583705418875.gif)
